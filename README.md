@@ -1,1 +1,1 @@
-# Traveller_Salesman
+# Traveller Salesman Problem and Half Traveller Salesman Problem
