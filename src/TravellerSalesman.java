@@ -4,7 +4,7 @@ import java.util.List;
 public class TravellerSalesman {
 	
 	private List<Integer> cityList;
-	private int distance;
+	private long distance;
 	
 	public TravellerSalesman(List<City> cities) {
 		this.cityList = orderCities(cities);
@@ -13,12 +13,22 @@ public class TravellerSalesman {
 	
 	private List<Integer> orderCities(List<City> cities) {
 		List<Integer> orderedList = new ArrayList();
-		//Burada dugru siralamamizi olusturacaz
+		int matris [][] = 
+		// matris olusturma
+		// matris islemleri
 		return orderedList;
 	}
 	
-	private int calculateDistance(List<City> cities) {
-		//Burada siralanmis listeyi cagirip, dosyadaki formul ugulanacak iki sehir icin mesafe hesaplama methodunu yazdim
+	private int arr[][] generateMatris(List<City> cities) {
+		//matris burada olusacak
+		return int arr[][];
+	}
+	
+	private long calculateDistance(List<City> cities) {
+		long result = 0;
+		for (int i = 0; i<cities.size(); i++) {
+			result = result + twoCityDistance(cities.get(i), cities.get(i+1));
+		}
 		return 0;
 	}
 	
@@ -30,7 +40,7 @@ public class TravellerSalesman {
 		return cityList;
 	}
 
-	public int getDistance() {
+	public long getDistance() {
 		return distance;
 	}
 
