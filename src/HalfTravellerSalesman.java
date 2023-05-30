@@ -19,6 +19,7 @@ public class HalfTravellerSalesman {
 	
 	private int calculateDistance(List<City> cities) {
 		//Burada siralanmis listeyi cagirip, dosyadaki formul ugulanacak 
+		
 		return 0;
 	}
 	

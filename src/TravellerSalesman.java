@@ -13,15 +13,25 @@ public class TravellerSalesman {
 	
 	private List<Integer> orderCities(List<City> cities) {
 		List<Integer> orderedList = new ArrayList();
-		int matris [][] = 
+		
 		// matris olusturma
 		// matris islemleri
-		return orderedList;
+		return null;
 	}
 	
-	private int arr[][] generateMatris(List<City> cities) {
+	private int[][] generateMatrix(List<City> cities) {
 		//matris burada olusacak
-		return int arr[][];
+		
+		int[][] matrixArr = new int[cities.size()][];
+		
+		for (int i = 0; i < cities.size(); i++) {
+			for(int j = 0; j < cities.size(); j++) {
+				matrixArr[i][j] = (int) twoCityDistance(cities.get(i),cities.get(j));
+			}
+		}
+		
+		
+		return matrixArr;
 	}
 	
 	private long calculateDistance(List<City> cities) {
