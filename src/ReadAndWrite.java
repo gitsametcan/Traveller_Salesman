@@ -28,8 +28,13 @@ public class ReadAndWrite {
 	}
 	
 	private void addCity(String line) {
-		City city = new City(findX(line),findX(line));
+		City city = new City(findId(line),findX(line),findX(line));
 		cities.add(city);
+	}
+	
+	private int findId(String line) {
+		//Burada stringin icindeki 1.sayi int olarak cevrilecek
+		return 0;
 	}
 	
 	private int findX(String line) {
@@ -38,7 +43,7 @@ public class ReadAndWrite {
 	}
 	
 	private int findY(String line) {
-		//Burada stringin icindeki 2.sayi int olarak cevrilecek
+		//Burada stringin icindeki 3.sayi int olarak cevrilecek
 		return 0;
 	}
 
