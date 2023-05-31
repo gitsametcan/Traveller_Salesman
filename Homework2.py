@@ -128,12 +128,15 @@ class System:
             tuples = {}
             regions = self.find_regions_for_max_city()
             first_region = regions[0]
-            if len(regions) > 0:
+            if len(regions) > 2:
                 for region in regions[1:]:
                     tuples[(abs(first_region.row - region.row), abs(first_region.column - region.column))] = region
             for i in range(1, len(regions)):
-                regions[i] = tuples[min(tuples)]
-                del tuples[min(tuples)]
+                try:
+                    regions[i] = tuples[min(tuples)]
+                    del tuples[min(tuples)]
+                except:
+                    pass
             for region in regions:
                 number_of_visited_city += region.number_of_cities
                 region.isVisitedTemp = True
@@ -160,10 +163,12 @@ class System:
         self.place_cities_to_regions(parsed_lines, self.regions)
         ordered_tour_for_regions = self.select_regions_of_half_cities(number_of_cities)
         order = 1
+        total = 0
         for region in ordered_tour_for_regions:
-            print(str(order) + ": Region[" + str(region.row) + "]" + "[" + str(region.column) + "]")
+            print(str(order) + ": Region[" + str(region.row) + "]" + "[" + str(region.column) + "]", len(region.cities))
             order += 1
-
+            total += len(region.cities)
+        print("\nTotal cities: ", total)
 
 
         #x = self.visit_cities(ordered_tour_for_regions)
