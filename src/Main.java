@@ -6,9 +6,10 @@ import java.util.HashMap;
 class Main {
 
 	public static List<City> cityList = new ArrayList<City>();
+	
 	public static void main(String[] args) {
-		ReadAndWrite input = new ReadAndWrite("example-input-3");	
 		
+		ReadAndWrite input = new ReadAndWrite("example-input-2");		
 		City city1 = new City(0,5,12);
         City city2 = new City(2,3,4);
         City city3 = new City(1,6,38);
@@ -31,18 +32,19 @@ class Main {
         cityList.add(city10);
         
         
-       for(int i = 0;i<10000;i++) {
-  	  Collections.shuffle(cityList);
-  	TravellerSalesman ts = new TravellerSalesman(input.getCities());
-  	  if(ts.getDistanceMine() < 10800)
-  		  System.out.println("FoNALLLYYYyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
-
-   }
-		
-		
-		//ReadAndWrite input = new ReadAndWrite("example-input-3");
-		
-		
+    	//while(true) {
+    		//Collections.shuffle(input.getCities());
+        	
+        	TravellerSalesman ts = new TravellerSalesman(input.getCities());
+        	System.out.println(ts.getCitiesStr());
+        	//if(ts.getDistance()<1920000) {
+        		//System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        		//break;
+        	//}
+        		
+    	//}*/
+        				
+	
 	}
 	
 }

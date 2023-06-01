@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class TravellerSalesman {
 	
 	private List<Integer> cityList;
-	private long distance;		private long distanceMine;
+	private long distance;
 	private int [][]cityTable;
 	private List<Integer> orderedCities;
-	
+	private String citiesStr;	
+
 	public TravellerSalesman(List<City> cities) {
 		//this.cityList = orderCities(cities);
 		//this.distance = calculateDistance(cities);
@@ -19,11 +19,12 @@ public class TravellerSalesman {
 
 	private List<Integer> orderCities(List<City> cities) {
 		
+		StringBuilder stringBuilder = new StringBuilder();
 		List<Integer> orderedList = new ArrayList();
 		List<City> tempCityList = new ArrayList<City>();
 		
 		int[][] tempMatrixArr = this.cityTable;
-		distanceMine = 0;
+		distance = 0;
 		int min = Integer.MAX_VALUE;
 		int tempX = 0;
 		int tempY = 0;
@@ -31,10 +32,13 @@ public class TravellerSalesman {
 		for (int i = 0; i < cities.size(); i++) {
 			tempCityList.add(cities.get(i));
 			orderedList.add(cities.get(i).getId());
+			stringBuilder.append(cities.get(i).getId()+"");
+			stringBuilder.append(" ");
 			
 			if(orderedList.size() == cities.size()) {
-				distanceMine += tempMatrixArr[i][0];
+				distance += tempMatrixArr[i][0];
 				orderedList.add(cities.get(0).getId());
+				stringBuilder.append(cities.get(0).getId()+"");
 				tempCityList.add(cities.get(0));
 				break;
 			}
@@ -49,18 +53,17 @@ public class TravellerSalesman {
 				}
 				
 			}
-			distanceMine += min;
+			distance += min;
 			for (int k = 0; k < cities.size(); k++)
 				tempMatrixArr[k][tempY] = 0;
 			for (int k = 0; k < cities.size(); k++)
 				tempMatrixArr[tempX][k] = 0;
 			i = tempY - 1;
 		}
-		/*for(int i = 0 ; i<=cities.size() ; i++)
-			System.out.print(tempCityList.get(i).getId() + " ");*/
+		citiesStr = stringBuilder.toString();
 		System.out.println("\n"+orderedList + "-> According to the id numbers");
-		System.out.println(orderedList.size());
-		System.out.println("Total Length = " +distanceMine);
+		System.out.println(orderedList.size() - 1 +" + 1 = "+orderedList.size() +" cities travelled");
+		System.out.println("Total Length = " + distance);
 		return orderedList;
 	}
 	
@@ -75,12 +78,13 @@ public class TravellerSalesman {
 				
 			}
 		}
-		/*for(int i = 0; i < matrixArr.length; i++) {
+		
+		for(int i = 0; i < matrixArr.length; i++) {
 			for(int j = 0; j < matrixArr.length; j++) {
 			System.out.print(matrixArr[i][j] + " ");
 			}
 			System.out.println();
-		}*/
+		}
 		
 		
 		return matrixArr;
@@ -108,8 +112,9 @@ public class TravellerSalesman {
 		return distance;
 	}
 	
-	public long getDistanceMine() {
-		return distanceMine;
+	public String getCitiesStr() {
+		return citiesStr;
 	}
+
 
 }
