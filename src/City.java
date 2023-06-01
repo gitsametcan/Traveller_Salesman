@@ -16,7 +16,7 @@ public class City {
 		this.point = pointTemp;
 	}
 	
-	public int getCityId() {
+	public int getId() {
 		return this.cityId;
 	}
 
