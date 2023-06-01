@@ -59,6 +59,7 @@ public class TravellerSalesman {
 		/*for(int i = 0 ; i<=cities.size() ; i++)
 			System.out.print(tempCityList.get(i).getId() + " ");*/
 		System.out.println("\n"+orderedList + "-> According to the id numbers");
+		System.out.println(orderedList.size());
 		System.out.println("Total Length = " +distanceMine);
 		return orderedList;
 	}
@@ -74,12 +75,12 @@ public class TravellerSalesman {
 				
 			}
 		}
-		for(int i = 0; i < matrixArr.length; i++) {
+		/*for(int i = 0; i < matrixArr.length; i++) {
 			for(int j = 0; j < matrixArr.length; j++) {
 			System.out.print(matrixArr[i][j] + " ");
 			}
 			System.out.println();
-		}
+		}*/
 		
 		
 		return matrixArr;
