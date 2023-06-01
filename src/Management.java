@@ -18,7 +18,7 @@ public class Management {
 	}
 	
 	public ArrayList<Object> readFile() {
-		ReadAndWrite input = new ReadAndWrite("example-input-1");
+		ReadAndWrite input = new ReadAndWrite(this.inputFileName);
 		int numberOfCities = input.getCities().size();
 		ArrayList<Integer> xCoordinates = new ArrayList<Integer>();
 		ArrayList<Integer> yCoordinates = new ArrayList<Integer>();
