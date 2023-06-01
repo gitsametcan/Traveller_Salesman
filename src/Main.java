@@ -8,10 +8,10 @@ class Main {
 
 	public static void main(String[] args) {
 		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&\nInput1 - Regions to visit in order");
-		Management management1 = new Management("example-input-3", 20); // 5
+		Management management1 = new Management("example-input-2", 20); // 5
 		management1.run();
 		List<City> tempCities = management1.getCities();
-		ReadAndWrite html = new ReadAndWrite("example-input-3");
+		ReadAndWrite html = new ReadAndWrite("example-input-2");
 		for (City c : tempCities) {
 			//System.out.println(c.getId()+" "+c.getX()+" "+c.getY());
 			

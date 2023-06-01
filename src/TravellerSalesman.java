@@ -35,9 +35,9 @@ public class TravellerSalesman {
 			
 			if(orderedList.size() == cities.size()) {
 				distance += tempMatrixArr[i][0];
-				orderedList.add(cities.get(0).getId());
-				stringBuilder.append(cities.get(0).getId()+"");
-				tempCityList.add(cities.get(0));
+				//orderedList.add(cities.get(0).getId());
+				//stringBuilder.append(cities.get(0).getId()+"");
+				//tempCityList.add(cities.get(0));
 				break;
 			}
 			
@@ -59,8 +59,8 @@ public class TravellerSalesman {
 			i = tempY - 1;
 		}
 		citiesStr = stringBuilder.toString();
-		/*System.out.println("\n"+orderedList + "-> According to the id numbers");
-		System.out.println(orderedList.size() - 1 +" + 1 = "+orderedList.size() +" cities travelled");
+		System.out.println(orderedList + "-> According to the id numbers");
+		/*System.out.println(orderedList.size() - 1 +" + 1 = "+orderedList.size() +" cities travelled");
 		System.out.println("Total Length = " + distance);*/
 		return orderedList;
 	}
