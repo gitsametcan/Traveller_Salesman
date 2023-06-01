@@ -1,26 +1,34 @@
-
 public class City {
 	
+	private int cityId;
 	private int x;
 	private int y;
-	private int id;
+	private int[] point;
 	
-	public City(int id, int x, int y) {
-		this.id = id;
+	public City(int cityId, int x, int y) {
+		this.cityId = cityId;
 		this.x = x;
 		this.y = y;
-	}
-
-	public int getId() {
-		return id;
+		int[] pointTemp = new int[2];
+		pointTemp[0] = x;
+		pointTemp[1] = y;
+		this.point = pointTemp;
 	}
 	
+	public int getId() {
+		return this.cityId;
+	}
+
 	public int getX() {
-		return x;
+		return this.x;
 	}
 
 	public int getY() {
-		return y;
+		return this.y;
+	}
+	
+	public int[] getPoint() {
+		return this.point;
 	}
 
 }

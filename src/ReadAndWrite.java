@@ -6,8 +6,7 @@ import java.util.Scanner;
 
 public class ReadAndWrite {
 	
-	private static List<City> cities = new ArrayList<City>();
-	
+	private List<City> cities = new ArrayList<City>();
 	public ReadAndWrite(String filename){
 		Scanner scanner;
 		try {
@@ -16,15 +15,12 @@ public class ReadAndWrite {
 				
 				String line = scanner.nextLine();
 				line = makeNormal(line);
-				addCity(line);
-								
+				addCity(line);					
 				 	   	   
 			}
 		} catch (FileNotFoundException e) {
 			System.out.print("txt file problem");
 		}
-		
-		
 		
 	}
 	
