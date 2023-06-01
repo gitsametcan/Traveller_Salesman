@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -130,6 +132,19 @@ public class ReadAndWrite {
 
 	public List<City> getCities() {
 		return cities;
+	}
+	
+	public void writeHTML(String output) {
+		try {
+			FileWriter writer = new FileWriter("output.txt"); // our output file is output.html
+			writer.write(output);
+			
+			writer.close();
+		      System.out.println("Successfully wrote to the file with marks.");
+		    } 
+		catch (IOException e) {
+		      System.out.println("An error occurred at writing.");
+		    }
 	}
 	
 	

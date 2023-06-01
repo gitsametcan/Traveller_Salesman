@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-
+import java.util.List;
 public class Management {
 	private String inputFileName;
-	private HashMap<Integer, ArrayList<Region>> regions; // key: "row index", value: "list of region objects"
+	private HashMap<Integer, ArrayList<Region>> regions;
 	private float rowColumnPercentageForRegion;
-	private float distanceX; // while each region is being created, distance which is between two neighbor region as x coordinate
-	private float distanceY; // while each region is being created, distance which is between two neighbor region as y coordinate
+	private float distanceX;
+	private float distanceY;
+	private List<City> cities ;
 	
 	public Management(String inputFileName, float percentage) {
 		this.inputFileName = inputFileName;
@@ -17,7 +18,7 @@ public class Management {
 		this.distanceY = 0;
 	}
 	
-	public ArrayList<Object> readFile() { // this reads files and return suitable arguments
+	public ArrayList<Object> readFile() {
 		ReadAndWrite input = new ReadAndWrite(this.inputFileName);
 		int numberOfCities = input.getCities().size();
 		ArrayList<Integer> xCoordinates = new ArrayList<Integer>();
@@ -39,10 +40,10 @@ public class Management {
 		dataPackage.add(parsedLines);
 		dataPackage.add(numberOfCities);
 		
-		return dataPackage; // return 4 arguments as data package
+		return dataPackage;
 	}
 	
-	public void createRegions() { // this creates regions
+	public void createRegions() {
 		int n = (int)(100 / this.rowColumnPercentageForRegion);
 		for(int i = 0; i < n; i++) {
 			ArrayList<Region> row = new ArrayList<Region>();
@@ -108,7 +109,6 @@ public class Management {
 	            }
 	        }
 	    }
-
 	    for (int i : this.regions.keySet()) {
 	        for (int j = 0; j < n; j++) {
 	            Region region = this.regions.get(i).get(j);
@@ -119,14 +119,29 @@ public class Management {
 	    }
 	    return regions;
 	}
-
 	
 	public ArrayList<Region> selectRegionsOfHalfCities(int numberOfCities) { // can be improved for same transition region by using row column
 	    ArrayList<Region> orderTourForRegions = new ArrayList<>();
 	    int halfCity = (int)(numberOfCities / 2);
 	    int numberOfVisitedCity = 0;
 	    while (true) {
+//	        HashMap<Integer, Region> tuples = new HashMap<>();
 	        ArrayList<Region> regions = findRegionsForMaxCity();
+//	        Region firstRegion = regions.get(0);
+//	        if (regions.size() > 2) {
+//	            for (int i = 1; i < regions.size(); i++) {
+//	                Region region = regions.get(i);
+//	                tuples.put(Math.abs(firstRegion.getRow() - region.getRow()), Math.abs(firstRegion.getColumn() - region.getColumn()), region);
+//	            }
+//	        }
+//	        for (int i = 1; i < regions.size(); i++) {
+//	            try {
+//	                regions.set(i, tuples.get(Collections.min(tuples.keySet())));
+//	                tuples.remove(Collections.min(tuples.keySet()));
+//	            } catch (Exception e) {
+//	                e.printStackTrace();
+//	            }
+//	        }
 	        for (Region region : regions) {
 	            numberOfVisitedCity += region.getNumberOfCities();
 	            region.setIsVisitedTemp(true);
@@ -152,40 +167,39 @@ public class Management {
 		this.setDistanceX(((upperX - lowerX) * this.getRowColumnPercentageForRegion()) / 100);
 		this.setDistanceY(((upperY - lowerY) * this.getRowColumnPercentageForRegion()) / 100);
 		this.createRegions();
-		this.placeCitiesToRegions(parsedLines);
+		this.placeCitiesToRegions(parsedLines); // problem &&&&&&&&&&&&&
 		ArrayList<Region> orderedTourForRegions = this.selectRegionsOfHalfCities(numberOfCities);
-		int halfCity = (int)(numberOfCities / 2);
-		TravellerSalesman travellerSalesman = new TravellerSalesman(orderedTourForRegions, halfCity);
-
-
 		
-		
-//		int order = 1;
-//		int total = 0;
-//		for(Region region: orderedTourForRegions) {
-//			System.out.println(order + ": Region[" + region.getRow() + "][" + region.getColumn() + "]" + region.getCities().size());
-//			order++;
-//			total = total + region.getCities().size();
-//		}
-//		System.out.println("\nTotal cities: " + total);
+		int order = 1;
+		int total = 0;
+		List<City> tempCities = new ArrayList<City>();
+		for(Region region: orderedTourForRegions) {
+			System.out.println(order + ": Region[" + region.getRow() + "][" + region.getColumn() + "]" + region.getCities().size());
+			order++;
+			total = total + region.getCities().size();
+			for ( City c: region.getCities()) {
+				tempCities.add(c);
+			}
+		}
+		this.cities = tempCities;
+		System.out.println("\nTotal cities: " + total);
 	}
-
+	
+	public List<City> getCities(){
+		return this.cities;
+	}
 	public String getInputFileName() {
 		return inputFileName;
 	}
-
 	public HashMap<Integer, ArrayList<Region>> getRegions() {
 		return regions;
 	}
-
 	public float getRowColumnPercentageForRegion() {
 		return rowColumnPercentageForRegion;
 	}
-
 	public float getDistanceX() {
 		return distanceX;
 	}
-
 	public float getDistanceY() {
 		return distanceY;
 	}

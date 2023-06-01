@@ -1,78 +1,43 @@
 import java.util.ArrayList;
 import java.util.List;
-
 public class TravellerSalesman {
 	
-	private ArrayList<Integer> cityList;
+	private List<Integer> cityList;
 	private long distance;
 	private int [][]cityTable;
-	private ArrayList<Integer> orderedCities;
-	private String citiesStr;
-	private ArrayList<Region> orderedTourForRegions;
-	private int halfOfCity;
-
-	public TravellerSalesman(ArrayList<Region> orderedTourForRegions, int halfOfCity) {
+	private List<Integer> orderedCities;
+	private String citiesStr;	
+	public TravellerSalesman(List<City> cities, int half) {
 		//this.cityList = orderCities(cities);
 		//this.distance = calculateDistance(cities);
-		this.halfOfCity = halfOfCity;
-		this.orderedTourForRegions = orderedTourForRegions;
-		this.cityTable = new int[0][0];
-		this.orderedCities = new ArrayList<Integer>();
-		this.visitEachRegion();
+		cities = remove(cities,half);
+		this.cityTable = generateMatrix(cities);
+		this.orderedCities = orderCities(cities);
 		
 	}
-	
-	public void visitEachRegion() {
-		long sumDistance = 0;
-		int index = 1;
-		for(Region region: this.orderedTourForRegions) {
-			this.cityTable = generateMatrix(region.getCities());
-			this.orderedCities = orderCities(region, index);
-			sumDistance = sumDistance + distance;
-			index++;
-			
-		}
-		System.out.println(sumDistance);
-	}
-
-	public ArrayList<Integer> orderCities(Region region, int index) {
-		ArrayList<City> cities = region.getCities();
+	private List<Integer> orderCities(List<City> cities) {
+		
 		StringBuilder stringBuilder = new StringBuilder();
-		ArrayList<Integer> orderedList = new ArrayList();
-		ArrayList<City> tempCityList = new ArrayList<City>();
+		List<Integer> orderedList = new ArrayList();
+		List<City> tempCityList = new ArrayList<City>();
 		
 		int[][] tempMatrixArr = this.cityTable;
 		distance = 0;
 		int min = Integer.MAX_VALUE;
 		int tempX = 0;
 		int tempY = 0;
-		int total = cities.size();
-		for(Region regionTemp: this.orderedTourForRegions) {
-			if(this.orderedTourForRegions.indexOf(regionTemp) == this.orderedTourForRegions.size() - 1) {
-				break;
-			}
-			total = total + regionTemp.getCities().size();
-		}
-
-		if (this.orderedTourForRegions.indexOf(region) == this.orderedTourForRegions.size() - 1) {
-			total = halfOfCity - total;
-		}
 		
-		
-		for (int i = 0; i < total; i++) {
+		for (int i = 0; i < cities.size(); i++) {
 			tempCityList.add(cities.get(i));
 			orderedList.add(cities.get(i).getId());
 			stringBuilder.append(cities.get(i).getId()+"");
-			stringBuilder.append(" ");
+			stringBuilder.append("\n");
 			
 			if(orderedList.size() == cities.size()) {
-				try {
-					distance += this.twoCityDistance(tempCityList.get(tempCityList.size() - 1), this.orderedTourForRegions.get(index).getCities().get(0));
-				}
-				catch (java.lang.IndexOutOfBoundsException e) {
-					break;
-				}
-
+				distance += tempMatrixArr[i][0];
+				orderedList.add(cities.get(0).getId());
+				stringBuilder.append(cities.get(0).getId()+"");
+				tempCityList.add(cities.get(0));
 				break;
 			}
 			
@@ -94,9 +59,9 @@ public class TravellerSalesman {
 			i = tempY - 1;
 		}
 		citiesStr = stringBuilder.toString();
-		System.out.println("\n"+orderedList + "-> According to the id numbers");
+		/*System.out.println("\n"+orderedList + "-> According to the id numbers");
 		System.out.println(orderedList.size() - 1 +" + 1 = "+orderedList.size() +" cities travelled");
-		System.out.println("Total Length = " + distance);
+		System.out.println("Total Length = " + distance);*/
 		return orderedList;
 	}
 	
@@ -112,12 +77,12 @@ public class TravellerSalesman {
 			}
 		}
 		
-//		for(int i = 0; i < matrixArr.length; i++) {
-//			for(int j = 0; j < matrixArr.length; j++) {
-//			System.out.print(matrixArr[i][j] + " ");
-//			}
-//			System.out.println();
-//		}
+		/*for(int i = 0; i < matrixArr.length; i++) {
+			for(int j = 0; j < matrixArr.length; j++) {
+			System.out.print(matrixArr[i][j] + " ");
+			}
+			System.out.println();
+		}*/
 		
 		
 		return matrixArr;
@@ -136,11 +101,19 @@ public class TravellerSalesman {
 		return temp;
 		
 	}
-
+	
+	private List<City> remove(List<City> cities,int a){
+		List<City> tempCityList = new ArrayList<City>();
+		
+		for (int i = 0; i<a; i++) {
+			tempCityList.add(cities.get(i));
+		}
+		
+		return tempCityList;
+	}
 	public List<Integer> getCityList() {
 		return cityList;
 	}
-
 	public long getDistance() {
 		return distance;
 	}
@@ -148,6 +121,4 @@ public class TravellerSalesman {
 	public String getCitiesStr() {
 		return citiesStr;
 	}
-
-
 }
