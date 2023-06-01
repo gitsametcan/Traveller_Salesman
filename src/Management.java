@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Management {
@@ -122,7 +123,7 @@ public class Management {
 	
 	public ArrayList<Region> selectRegionsOfHalfCities(int numberOfCities) { // can be improved for same transition region by using row column
 	    ArrayList<Region> orderTourForRegions = new ArrayList<>();
-	    int halfCity = numberOfCities / 2;
+	    int halfCity = (int)(numberOfCities / 2);
 	    int numberOfVisitedCity = 0;
 	    while (true) {
 //	        HashMap<Integer, Region> tuples = new HashMap<>();
@@ -152,6 +153,32 @@ public class Management {
 	            }
 	        }
 	    }
+	}
+	
+	public void run() {
+		ArrayList<Object> dataPackage = this.readFile();
+		ArrayList<Integer> xCoordinates = (ArrayList<Integer>)dataPackage.get(0);
+		ArrayList<Integer> yCoordinates = (ArrayList<Integer>)dataPackage.get(1);
+		ArrayList<int[]> parsedLines = (ArrayList<int[]>)dataPackage.get(2);
+		int numberOfCities = (int)dataPackage.get(3);
+		int upperX = Collections.max(xCoordinates) + 500;
+		int lowerX = Collections.min(xCoordinates) - 500;
+		int upperY = Collections.max(yCoordinates) + 500;
+		int lowerY = Collections.min(yCoordinates) - 500;
+		this.setDistanceX(((upperX - lowerX) * this.getRowColumnPercentageForRegion()) / 100);
+		this.setDistanceY(((upperY - lowerY) * this.getRowColumnPercentageForRegion()) / 100);
+		this.createRegions();
+		this.placeCitiesToRegions(parsedLines); // problem &&&&&&&&&&&&&
+		ArrayList<Region> orderedTourForRegions = this.selectRegionsOfHalfCities(numberOfCities);
+		
+		int order = 1;
+		int total = 0;
+		for(Region region: orderedTourForRegions) {
+			System.out.println(order + ": Region[" + region.getRow() + "][" + region.getColumn() + "]" + region.getCities().size());
+			order++;
+			total = total + region.getCities().size();
+		}
+		System.out.println("\nTotal cities: " + total);
 	}
 
 	public String getInputFileName() {
