@@ -190,7 +190,6 @@ public class Management {
 		//System.out.println("\nTotal cities: " + total);
 	}
 	
-	// NEW!!!!! - duzenleme gerekli
 	public void compareCityDistances(ArrayList<Region> orderedTour) {
 		
 		ArrayList<Integer> temp1 = new ArrayList<Integer>();
@@ -233,7 +232,9 @@ public class Management {
 		}
 		
 		for (Region region: orderedTour) { 
-			//  burada eklemeyi yapamadým buna raðmen output3 fazladan onlarca belki yuzlerce city eklemesine raðmen 755 binden 795 bine cikti yani fazladan eklemezse düsürecegine emin gibiyim
+			for (int i = 0; i < region.getCities().size() - 4; i++) {
+				region.getCities().set(i, temp5.get(i));
+			}
 			
 		}
 		
