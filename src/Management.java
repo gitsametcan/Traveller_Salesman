@@ -10,6 +10,7 @@ public class Management {
 	private float distanceY;
 	private List<City> cities ;
 	
+	
 	public Management(String inputFileName, float percentage) {
 		this.inputFileName = inputFileName;
 		this.regions = new HashMap<Integer, ArrayList<Region>>();
@@ -173,17 +174,72 @@ public class Management {
 		int order = 1;
 		int total = 0;
 		List<City> tempCities = new ArrayList<City>();
+		
+		compareCityDistances(orderedTourForRegions);
 		for(Region region: orderedTourForRegions) {
 			//System.out.println(order + ": Region[" + region.getRow() + "][" + region.getColumn() + "]" + region.getCities().size());
 			order++;
 			total = total + region.getCities().size();
 			for ( City c: region.getCities()) {
 				tempCities.add(c);
+				
 			}
 		}
 		this.cities = tempCities;
+		
 		//System.out.println("\nTotal cities: " + total);
 	}
+	
+	public void compareCityDistances(ArrayList<Region> orderedTour) {
+		
+		ArrayList<Integer> temp1 = new ArrayList<Integer>();
+		ArrayList<Integer> temp2 = new ArrayList<Integer>();
+		ArrayList<Integer> temp3 = new ArrayList<Integer>();
+		ArrayList<Integer> temp4 = new ArrayList<Integer>();
+		
+		for (Region region: orderedTour) {
+				 for (int i = 0; i < region.getCities().size() - 4; i++) {
+					 
+					 int t1 = (int) Math.sqrt(Math.pow(region.getCities().get(i).getX() - region.getCities().get(i + 1).getX(), 2) + Math.pow(region.getCities().get(i).getY() - region.getCities().get(i + 1).getY(), 2));
+					 temp1.add(t1);
+					 
+					 int t2 = (int) Math.sqrt(Math.pow(region.getCities().get(i + 1).getX() - region.getCities().get(i + 2).getX(), 2) + Math.pow(region.getCities().get(i + 1).getY() - region.getCities().get(i + 2).getY(), 2));
+					 temp2.add(t2);
+					 
+					 int t3 = (int) Math.sqrt(Math.pow(region.getCities().get(i + 2).getX() - region.getCities().get(i + 3).getX(), 2) + Math.pow(region.getCities().get(i + 2).getY() - region.getCities().get(i + 3).getY(), 2));
+					 temp3.add(t3);
+					 
+					 int t4 = (int) Math.sqrt(Math.pow(region.getCities().get(i + 3).getX() - region.getCities().get(i + 4).getX(), 2) + Math.pow(region.getCities().get(i + 3).getY() - region.getCities().get(i + 4).getY(), 2));
+					 temp4.add(t4);
+				 }
+		    }
+		ArrayList<City> temp5 = new ArrayList<City>();
+		for (Region region: orderedTour) {
+			for (City c: region.getCities()) {
+			temp5.add(c);
+			}
+			
+			
+		}
+		for (int i = 0; i < temp1.size(); i++) {
+			if (temp1.get(i) + temp3.get(i) <= temp2.get(i) + temp4.get(i)) {
+					temp5.set(i , temp5.get(i + 2));
+					temp5.set(i + 2, temp5.get(i));
+					temp5.set(i + 1, temp5.get(i + 3));
+				    temp5.set(i + 3, temp5.get(i + 1));
+					
+			}
+		}
+		
+		for (Region region: orderedTour) { 
+			for (int i = 0; i < region.getCities().size() - 4; i++) {
+				region.getCities().set(i, temp5.get(i));
+			}
+			
+		}
+		
+	}
+	
 	
 	public List<City> getCities(){
 		return this.cities;
