@@ -232,9 +232,9 @@ public class Management {
 		}
 		
 		for (Region region: orderedTour) { 
-			for (int i = 0; i < region.getCities().size() - 4; i++) {
-				region.getCities().set(i, temp5.get(i));
-			}
+			
+				region.getCities().addAll(temp5);
+			
 			
 		}
 		
