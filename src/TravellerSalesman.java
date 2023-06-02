@@ -59,7 +59,7 @@ public class TravellerSalesman {
 			i = tempY - 1;
 		}
 		citiesStr = stringBuilder.toString();
-		System.out.println(orderedList + "-> According to the id numbers");
+		//System.out.println(orderedList + "-> According to the id numbers");
 		/*System.out.println(orderedList.size() - 1 +" + 1 = "+orderedList.size() +" cities travelled");
 		System.out.println("Total Length = " + distance);*/
 		return orderedList;

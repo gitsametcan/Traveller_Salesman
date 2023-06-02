@@ -174,7 +174,7 @@ public class Management {
 		int total = 0;
 		List<City> tempCities = new ArrayList<City>();
 		for(Region region: orderedTourForRegions) {
-			System.out.println(order + ": Region[" + region.getRow() + "][" + region.getColumn() + "]" + region.getCities().size());
+			//System.out.println(order + ": Region[" + region.getRow() + "][" + region.getColumn() + "]" + region.getCities().size());
 			order++;
 			total = total + region.getCities().size();
 			for ( City c: region.getCities()) {
@@ -182,7 +182,7 @@ public class Management {
 			}
 		}
 		this.cities = tempCities;
-		System.out.println("\nTotal cities: " + total);
+		//System.out.println("\nTotal cities: " + total);
 	}
 	
 	public List<City> getCities(){
