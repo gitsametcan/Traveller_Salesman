@@ -134,9 +134,9 @@ public class ReadAndWrite {
 		return cities;
 	}
 	
-	public void writeHTML(String output) {
+	public void writeHTML(String output, String outputName) {
 		try {
-			FileWriter writer = new FileWriter("output.txt"); // our output file is output.html
+			FileWriter writer = new FileWriter(outputName + "-output.txt"); // our output file is output.html
 			writer.write(output);
 			
 			writer.close();
