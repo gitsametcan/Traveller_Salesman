@@ -9,9 +9,7 @@ import java.util.Scanner;
 public class ReadAndWrite {
 	
 	private List<City> cities = new ArrayList<City>();
-	private String filename;
 	public ReadAndWrite(String filename){
-		this.filename = filename;
 		Scanner scanner;
 		try {
 			scanner = new Scanner(new File(filename + ".txt"));
@@ -138,11 +136,11 @@ public class ReadAndWrite {
 	
 	public void writeHTML(String output) {
 		try {
-			FileWriter writer = new FileWriter("output" + this.filename.charAt(14) + ".txt"); // our output file is output.html
+			FileWriter writer = new FileWriter("output.txt"); // our output file is output.html
 			writer.write(output);
 			
 			writer.close();
-		      System.out.println("Output of " + this.filename + " is successfully wrote to the file with marks.\n");
+		      System.out.println("Successfully wrote to the file with marks.");
 		    } 
 		catch (IOException e) {
 		      System.out.println("An error occurred at writing.");
