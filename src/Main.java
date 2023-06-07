@@ -5,7 +5,9 @@ class Main {
 
 	public static void main(String[] args) {
 		
-		System.gc();
+		boolean isTrue = true;
+		while(isTrue) {
+	    System.gc();
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Please choose input file to calculate Half Traveller Salesman Problem! (without .txt)");
 		String input = scanner.nextLine();
@@ -23,6 +25,35 @@ class Main {
 		//System.out.println(ts1.getDistance());
 		String output = ts.getDistance() + "\n" + ts.getCitiesStr().toString(); 
 		html.writeHTML(output,input);
+		
+		Scanner scanner2 = new Scanner(System.in);
+		System.out.println("Do you want to continue calculating? Yes or No");
+		String yesOrNo = scanner.nextLine();
+		
+		if (yesOrNo.equals("Yes")) {
+			isTrue = true;
+		}
+		else if (yesOrNo.equals("No")) {
+			isTrue = false;
+			System.out.println("Have a nice day!");
+		}
+		else {
+			while(!yesOrNo.equals("Yes") && !yesOrNo.equals("No")) {
+		System.out.println("Please enter Yes or No");
+		System.out.println("Do you want to continue calculating? Yes or No");
+		yesOrNo = scanner.nextLine();
+		if (yesOrNo.equals("Yes")) {
+			isTrue = true;
+		}
+		else if (yesOrNo.equals("No")) {
+			isTrue = false;
+			System.out.println("Have a nice day!");
+		}
+		}
+		}
+		
+		}
+		
 		
 	}	
 	
