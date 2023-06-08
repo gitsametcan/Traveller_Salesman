@@ -21,7 +21,7 @@ class Main {
 
 		System.out.println("(The percentages where we get the best results for the given inputs are stated in the report and in the ReadMe file.)");
 
-
+		System.out.print("Enter precentage please:");
 		int ratio = scanner.nextInt();
 		
 		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&\n" + input + " - Regions to visit in order");
