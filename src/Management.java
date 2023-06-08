@@ -9,7 +9,7 @@ public class Management {
 	private float distanceX;
 	private float distanceY;
 	private List<City> cities ;
-	int total = 0;
+
 	
 	public Management(String inputFileName, float percentage) {
 		this.inputFileName = inputFileName;
@@ -76,7 +76,7 @@ public class Management {
 		for(int[] parsedLine: parsedLines) {
 			cities.add(new City(parsedLine[0], parsedLine[1], parsedLine[2]));
 		}
-		total = cities.size();
+		
 		return cities;
 	}
 	
@@ -171,19 +171,20 @@ public class Management {
 		this.createRegions();
 		this.placeCitiesToRegions(parsedLines); // problem &&&&&&&&&&&&&
 		ArrayList<Region> orderedTourForRegions = this.selectRegionsOfHalfCities(numberOfCities);
-		
+		int total =0;
 		int order = 1;
 		List<City> tempCities = new ArrayList<City>();
 		for(Region region: orderedTourForRegions) {
 			System.out.println(order + ": Region[" + region.getRow() + "][" + region.getColumn() + "]" + region.getCities().size());
 			order++;
+			total = total + region.getCities().size();
 			for ( City c: region.getCities()) {
 				tempCities.add(c);
 			}
 		}
 		
 		this.cities = tempCities;
-		System.out.println("\nTotal cities: " + total);
+		System.out.println("\nTotal cities in this regions is: " + total + "(This is not half!)");
 	}
 	
 	public List<City> getCities(){

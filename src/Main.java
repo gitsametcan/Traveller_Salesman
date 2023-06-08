@@ -25,14 +25,14 @@ class Main {
 		int ratio = scanner.nextInt();
 		
 		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&\n" + input + " - Regions to visit in order");
-		Management management1 = new Management(input, ratio); // 5
+		Management management1 = new Management(input, ratio);
 		management1.run();
 		List<City> tempCities = management1.getCities();
 		ReadAndWrite html = new ReadAndWrite(input);
 		
 		TravellerSalesman ts = new TravellerSalesman(tempCities, html.getCities().size()/2);
 		
-		System.out.println("Total distance with " + html.getCities().size()/2 + " cities is: " + ts.getDistance());
+		System.out.println("Total distance with " + html.getCities().size()/2 + " cities (this is half) is: " + ts.getDistance());
 		
 		String output = ts.getDistance() + "\n" + ts.getCitiesStr().toString(); 
 		html.writeHTML(output,input);
