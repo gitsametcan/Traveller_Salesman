@@ -68,22 +68,7 @@ public class TravellerSalesman {
 			}
 		}
 		
-		/*for(int i = 0; i < matrixArr.length; i++) {
-			for(int j = 0; j < matrixArr.length; j++) {
-			System.out.print(matrixArr[i][j] + " ");
-			}
-			System.out.println();
-		}*/
-		
 		return matrixArr;
-	}
-	
-	private long calculateDistance(List<City> cities) {
-		long result = 0;
-		for (int i = 0; i<cities.size() - 1; i++) {
-			result = result + twoCityDistance(cities.get(i), cities.get(i+1));
-		}
-		return 0;
 	}
 	
 	private long twoCityDistance(City city1, City city2) {
