@@ -9,6 +9,7 @@ class Main {
 		while(isTrue) {
 	    System.gc();
 		Scanner scanner = new Scanner(System.in);
+
 		System.out.println("Please enter input file name for calculate Half Traveller Salesman Problem"
 				+ " without file extnsion! (input file must be in txt format)");
 		String input = scanner.next();
@@ -17,6 +18,10 @@ class Main {
 				+ "if you enter 20 your, the area will divide into 5 rows and 5 columns (100/20=5) or \n"
 				+ "if you enter 10 your, the area will divide into 10 rows and 10 columns (100/10=10)");
 		
+
+		System.out.println("Please choose input file to calculate Half Traveller Salesman Problem! (without .txt)");
+		String input = scanner.next();
+
 
 		int ratio = scanner.nextInt();
 		
@@ -32,7 +37,7 @@ class Main {
 		
 		String output = ts.getDistance() + "\n" + ts.getCitiesStr().toString(); 
 		html.writeHTML(output,input);
-		
+
 		System.out.println("Do you want to continue calculating? Yes or No");
 		String yesOrNo = scanner.next();
 		
@@ -47,18 +52,18 @@ class Main {
 			while(!yesOrNo.equals("Yes") && !yesOrNo.equals("No")) {
 		System.out.println("Please enter Yes or No");
 		System.out.println("Do you want to continue calculating? Yes or No");
-		yesOrNo = scanner.nextLine();
+		yesOrNo = scanner.next();
 		if (yesOrNo.equals("Yes")) {
 			isTrue = true;
 		}
 		else if (yesOrNo.equals("No")) {
 			isTrue = false;
 			System.out.println("Have a nice day!");
-		}
-		}
+		        }
+		    }
 		}
 		
-		}
+	}
 		
 		
 	}	
