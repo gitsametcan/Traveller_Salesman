@@ -11,7 +11,7 @@ class Main {
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("Please enter input file name for calculate Half Traveller Salesman Problem"
-				+ " without file extnsion! (input file must be in txt format)");
+				+ " without file extnsion! (without .txt)");
 		String input = scanner.next();
 		
 		System.out.println("Now we We will already ask you to enter a percentage. This will use for region dividing. For example: \n"
