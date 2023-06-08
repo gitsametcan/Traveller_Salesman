@@ -12,13 +12,13 @@ First of all you can run code with running Main class.
 IMPORTANT : The result with change with this division.
 
 Our Percentages for best results are:
-example-input-1:
-example-input-2:
-example-input-3:
-test-input-1:
-test-input-2:
-test-input-3:
-test-input-4:
+example-input-1: %19
+example-input-2: %8
+example-input-3: %5
+test-input-1: %8
+test-input-2: %20
+test-input-3: %27
+test-input-4: %19
 
 4-Program will output a file which name is your input file name + -output
 

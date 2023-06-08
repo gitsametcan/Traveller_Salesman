@@ -11,7 +11,7 @@ class Main {
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("Please enter input file name for calculate Half Traveller Salesman Problem"
-				+ " without file extnsion! (without .txt)");
+				+ " without file extension! (Input file should be in txt format)");
 		String input = scanner.next();
 		
 		System.out.println("Now we We will already ask you to enter a percentage. This will use for region dividing. For example: \n"
@@ -37,25 +37,25 @@ class Main {
 		String output = ts.getDistance() + "\n" + ts.getCitiesStr().toString(); 
 		html.writeHTML(output,input);
 
-		System.out.println("Do you want to continue calculating? Yes or No");
+		System.out.println("Do you want to continue calculating? y or n");
 		String yesOrNo = scanner.next();
 		
-		if (yesOrNo.equals("Yes")) {
+		if (yesOrNo.equals("y")) {
 			isTrue = true;
 		}
-		else if (yesOrNo.equals("No")) {
+		else if (yesOrNo.equals("n")) {
 			isTrue = false;
 			System.out.println("Have a nice day!");
 		}
 		else {
-			while(!yesOrNo.equals("Yes") && !yesOrNo.equals("No")) {
-		System.out.println("Please enter Yes or No");
+			while(!yesOrNo.equals("y") && !yesOrNo.equals("n")) {
+		System.out.println("Please enter y or n");
 		System.out.println("Do you want to continue calculating? Yes or No");
 		yesOrNo = scanner.next();
-		if (yesOrNo.equals("Yes")) {
+		if (yesOrNo.equals("y")) {
 			isTrue = true;
 		}
-		else if (yesOrNo.equals("No")) {
+		else if (yesOrNo.equals("n")) {
 			isTrue = false;
 			System.out.println("Have a nice day!");
 		        }
