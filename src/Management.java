@@ -9,6 +9,7 @@ public class Management {
 	private float distanceX;
 	private float distanceY;
 	private List<City> cities ;
+	int total = 0;
 	
 	public Management(String inputFileName, float percentage) {
 		this.inputFileName = inputFileName;
@@ -75,6 +76,7 @@ public class Management {
 		for(int[] parsedLine: parsedLines) {
 			cities.add(new City(parsedLine[0], parsedLine[1], parsedLine[2]));
 		}
+		total = cities.size();
 		return cities;
 	}
 	
@@ -171,16 +173,15 @@ public class Management {
 		ArrayList<Region> orderedTourForRegions = this.selectRegionsOfHalfCities(numberOfCities);
 		
 		int order = 1;
-		int total = 0;
 		List<City> tempCities = new ArrayList<City>();
 		for(Region region: orderedTourForRegions) {
 			System.out.println(order + ": Region[" + region.getRow() + "][" + region.getColumn() + "]" + region.getCities().size());
 			order++;
-			total = total + region.getCities().size();
 			for ( City c: region.getCities()) {
 				tempCities.add(c);
 			}
 		}
+		
 		this.cities = tempCities;
 		System.out.println("\nTotal cities: " + total);
 	}
