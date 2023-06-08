@@ -8,7 +8,6 @@ public class Management {
 	private float rowColumnPercentageForRegion;
 	private float distanceX;
 	private float distanceY;
-	private int halfNumberOfCities;
 	private List<City> cities ;
 	
 	public Management(String inputFileName, float percentage) {
@@ -22,7 +21,6 @@ public class Management {
 	public ArrayList<Object> readFile() {
 		ReadAndWrite input = new ReadAndWrite(this.inputFileName);
 		int numberOfCities = input.getCities().size();
-		this.halfNumberOfCities = input.getCities().size()/2;
 		ArrayList<Integer> xCoordinates = new ArrayList<Integer>();
 		ArrayList<Integer> yCoordinates = new ArrayList<Integer>();
 		ArrayList<int[]> parsedLines = new ArrayList<int[]>();
@@ -212,10 +210,6 @@ public class Management {
 	
 	public void setDistanceY(float distanceY) {
 		this.distanceY = distanceY;
-	}
-
-	public int getHalfNumberOfCities() {
-		return halfNumberOfCities;
 	}
 	
 }

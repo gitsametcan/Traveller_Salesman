@@ -19,8 +19,7 @@ class Main {
 				+ "if you enter 10 your, the area will divide into 10 rows and 10 columns (100/10=10)");
 		
 
-		System.out.println("Please choose input file to calculate Half Traveller Salesman Problem! (without .txt)");
-		String input = scanner.next();
+		System.out.println("(The percentages where we get the best results for the given inputs are stated in the report and in the ReadMe file.)");
 
 
 		int ratio = scanner.nextInt();
