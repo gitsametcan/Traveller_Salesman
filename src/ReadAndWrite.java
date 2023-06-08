@@ -140,7 +140,7 @@ public class ReadAndWrite {
 			writer.write(output);
 			
 			writer.close();
-		      System.out.println("Successfully wrote to the file with marks.");
+		      System.out.println("Successfully wrote to the file in testable format.(Output name is input file name + -output.txt)");
 		    } 
 		catch (IOException e) {
 		      System.out.println("An error occurred at writing.");
